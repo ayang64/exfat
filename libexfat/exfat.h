@@ -171,6 +171,8 @@ cluster_t exfat_advance_cluster(const struct exfat* ef,
 		struct exfat_node* node, uint32_t count);
 int exfat_flush_nodes(struct exfat* ef);
 int exfat_flush(struct exfat* ef);
+int exfat_erase_range(struct exfat* ef, struct exfat_node* node,
+		uint64_t begin, uint64_t end);
 int exfat_truncate(struct exfat* ef, struct exfat_node* node, uint64_t size,
 		bool erase);
 uint32_t exfat_count_free_clusters(const struct exfat* ef);

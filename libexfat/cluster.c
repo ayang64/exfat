@@ -369,7 +369,7 @@ static bool erase_raw(struct exfat* ef, size_t size, off_t offset)
 	return true;
 }
 
-static int erase_range(struct exfat* ef, struct exfat_node* node,
+int exfat_erase_range(struct exfat* ef, struct exfat_node* node,
 		uint64_t begin, uint64_t end)
 {
 	uint64_t cluster_boundary;
@@ -427,7 +427,7 @@ int exfat_truncate(struct exfat* ef, struct exfat_node* node, uint64_t size,
 
 	if (erase)
 	{
-		rc = erase_range(ef, node, node->size, size);
+		rc = exfat_erase_range(ef, node, node->size, size);
 		if (rc != 0)
 			return rc;
 	}
